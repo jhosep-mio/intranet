@@ -1,0 +1,228 @@
+@use 'settings' as C;
+
+header{
+    padding: 10px 0 22px 0;
+    border-bottom: 1px solid #cecece;
+}
+
+.contact_header{
+    padding: 10px 60px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px 8px 3px -7px rgba(0,0,0,0.1);
+
+    &__ubicacion{
+        display: flex;
+        gap: 20px;
+
+        a{
+            font-size: 14px;
+            text-decoration: none;
+            transition: all .3s;
+
+            svg{
+                color: C.$main-color;
+                margin: 0 3px;
+                transition: all .3s;
+            }
+
+            &:hover{
+                color: C.$main-color;
+
+                svg{
+                    color: C.$main-color;
+                }
+            }
+
+        }
+    }
+
+    &__socialMedia{
+        display: flex;
+        gap: 20px;
+
+        a{
+            font-size: 14px;
+            text-decoration: none;
+            transition: all .3s;
+
+            svg{
+                color: #555555;
+                margin: 0 5px;
+                transition: all .3s;
+            }
+
+            &:hover{
+                color: C.$main-color;
+
+                svg{
+                    color: C.$main-color;
+                }
+            }
+        }
+    }
+}
+
+.main-menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 60px 20px 60px;
+
+    &__logo-header{
+        max-width: 450px;
+
+        img{
+            width: 100%;
+        }
+    }
+    &__menu {
+
+        &__nav{
+
+            &__list_nav{
+                list-style: none;
+                display: flex;
+                gap: 25px;
+                justify-content: space-between;
+                padding: 0;
+                margin: 0;
+
+                a{
+                    text-decoration: none;
+                    color: #000;
+                    position: relative;
+                    font-size: 18px;
+                    font-family: 'Duru Sans', sans-serif;
+                    transition: all .3s;
+                    
+                    &::before{
+                        content: '';
+                        position: absolute;
+                        width: 0;
+                        height: 2px;
+                        border-radius: 15px;
+                        top: 100%;
+                        left: 0;
+                        background: C.$main-color;
+                        transition: all .3s;
+                    }
+
+                    &:hover{
+                        color: C.$main-color;
+
+                        &::before{
+                            animation: effect 300ms linear forwards;
+                        }
+                        
+                    }
+
+                    @keyframes effect{
+                        from{
+                            width: 0;
+                        }
+                        to{
+                            width: 100%;
+                        }
+                    }
+                }
+
+
+                li{
+                    display: flex;
+                    align-items: center;
+
+                    &:last-child{
+                        a{
+                            display: block;
+                            padding: C.$pdButton;
+                            background: C.$main-color;
+                            color: #fff;
+                            border-radius: C.$bordeR;
+                        
+                            &:hover{
+                                animation: none !important;
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        }        
+    }
+
+    &__btn{
+        display: none;
+    }
+}
+
+/****************** RESPONSIVE *****************************/
+
+@media(max-width: 1200px){
+    .main-menu{
+        &__logo-header{
+            max-width: 350px;
+        }
+
+        
+    }
+}
+
+@media(max-width: 992px){
+    .main-menu{
+        &__menu {
+
+        }
+        &__btn{
+            position: relative;
+            width: 60px;
+            display: block;
+            height: 60px;
+
+            &__content{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                input{
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    z-index: 2;
+                    appearance: none;
+
+                    &:checked{
+
+                    }
+                }
+
+                span{
+                    position: absolute;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+
+                    svg{
+                        font-size: 38px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 768px){
+    
+}
+
+@media(max-width: 576px){
+    
+}
+
+@media(max-width: 360px){
+    
+}

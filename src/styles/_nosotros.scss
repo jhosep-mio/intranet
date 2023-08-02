@@ -1,0 +1,148 @@
+@use 'settings' as C;
+
+.nosotros2{
+    padding: 50px 80px;
+    display: flex;
+
+    &:hover &__img picture{
+
+        animation: bg 300ms linear forwards;
+        
+        @keyframes bg{
+            from{
+                background: radial-gradient(circle, rgba(89,86,92,0.7848389355742297) 0%, rgba(221,49,49,0) 54%);
+            }
+
+            to{
+                background: radial-gradient(circle, rgba(232,205,255,0.7848389355742297) 0%, rgba(221,49,49,0) 54%);
+            }
+        }
+    }
+
+    
+
+    &__main{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        &__title{
+            h1{
+                font-family: 'Laila', sans-serif;
+                font-size: 60px;
+                span{
+                    color: C.$main-color;
+                    font-family: 'Laila', sans-serif;
+                }
+               
+                text-align: center;
+                
+            }
+        }
+    
+        &__info{
+    
+            padding-top: 20px;
+    
+            p{
+                text-align: center;
+                font-family: 'Duru Sans', sans-serif;
+                font-size: 18px;
+            }
+        }
+    }
+
+    &__img{
+        width: 50%;
+
+        picture{
+            background: rgb(89,86,92);
+            background: radial-gradient(circle, rgba(89,86,92,0.7848389355742297) 0%, rgba(221,49,49,0) 54%);
+            display: block;
+            transition: all .3s;
+        }
+
+        img{
+            width: 60%;
+            display: block;
+            margin: 0 auto;
+        }
+    }
+
+    
+}
+
+.info{
+    &__main{
+        display: flex;
+        overflow: hidden;
+
+        &__gen{
+            padding: 60px 60px;
+            width: 50%;
+            background-repeat: no-repeat;
+            transition: all .3s;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+
+            h2{
+                font-family: 'Laila', sans-serif;
+                text-align: center;
+                font-size: 38px;
+                font-weight: 800;
+                color: #fff;
+            }
+
+            p{
+                padding-top: 30px;
+                text-align: center;
+                font-size: 16px;
+                color: #fff;
+                font-family: 'Duru Sans', sans-serif;
+            }
+
+            &:nth-child(1){
+                background-image: url(../assets/nosotros/mision.jpg);
+                background-size: cover;
+                background-position: top;
+                position: relative;
+                z-index: 1;
+
+                &::before{
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    background: #C5B3D4;
+                    opacity: .7;
+                    z-index: -1;
+                }
+            }
+
+            &:nth-child(2){
+                background-image: url(../assets/nosotros/vision.jpg);
+                background-size: cover;
+                background-position: top;
+                position: relative;
+                z-index: 1;
+
+                &::before{
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    background: #41326D;
+                    opacity: .5;
+                    z-index: -1;
+                }
+            }
+        }
+    }
+}

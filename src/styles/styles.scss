@@ -1,0 +1,18 @@
+@use './settings';
+
+
+//PUBLIC
+@use './header';
+@use './home';
+@use './footer';
+@use './nosotros';
+@use './resultados';
+@use'./servicios';
+@use'./contacto';
+
+//ADMIN
+@use './login';
+@use './adminNav';
+@use './listas';
+
+@use './especificos2';
