@@ -12,17 +12,11 @@ import { Paginacion } from "../../shared/Paginacion";
 const ListaServicios = () => {
   let token = localStorage.getItem("token");
   const [itemServices, setitemServices] = useState([]);
-  const [servicios, setservicios] = useState([]);
-  const [insumo, setInsumo] = useState({});
-  const [itemPagination, setItemPagination] = useState([]);
-  const [itemPaginationOdonto, setItemPaginationOdonto] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const [paginaActual, setpaginaActual] = useState(1);
-  const [paginaActualOdonto, setPaginaActualOdonto] = useState(1);
   const [cantidadRegistros] = useState(4);
   const [cargandoBusqueda, setCargandoBusqueda] = useState(0);
-  const [cargandoBusqueda2, setCargandoBusqueda2] = useState(0);
   const [activo, setActivo] = useState(0);
   const { auth, setAuth } = useAuth();
   const navigate = useNavigate();
@@ -73,18 +67,6 @@ const ListaServicios = () => {
       .join("")
       .toString();
   }
-
-  const handlePaginaAnterior = () => {
-    if (paginaActual > 1) {
-      setpaginaActual(paginaActual - 1);
-    }
-  };
-
-  const handlePaginaSiguiente = () => {
-    if (paginaActual < Math.ceil(totalPosts / cantidadRegistros)) {
-      setpaginaActual(paginaActual + 1);
-    }
-  };
 
   const onSeachChange = ({ target }) => {
     setpaginaActual(1);
@@ -166,7 +148,7 @@ const ListaServicios = () => {
         || item.precio_digital.toString().includes(search.toLowerCase())
       );
     });
-
+    totalPosts= filter.length;
     return filter.slice(indexOfFirstPost, indexOfLastPost);
   };
 

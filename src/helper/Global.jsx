@@ -1,4 +1,4 @@
 export const Global = {
-    url: "http://apiradiologia.padreeterno.com/public/api",
-    urlImages: "http://apiradiologia.padreeterno.com/public"
+    url: "http://127.0.0.1:8000/api",
+    urlImages: "http://127.0.0.1:8000"
 };

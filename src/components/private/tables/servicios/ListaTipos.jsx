@@ -100,7 +100,7 @@ const ListaTipos = () => {
           item.id.toString().includes(search.toLowerCase())
       )
     });
-
+    totalPosts= filter.length;
     return filter.slice(indexOfFirstPost, indexOfLastPost);
   };
 

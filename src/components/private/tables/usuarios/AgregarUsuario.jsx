@@ -73,7 +73,7 @@ const AgregarUsuario = () => {
                                 <select value={id_rol} type="text" className="form-select2"  autoFocus required onChange={(e)=>{setId_rol(e.target.value)}}>
                                     <option value="">Seleccionar</option>
                                     <option value="99">Administrador</option>
-                                    <option value="98">Recepcion</option>
+                                    <option value="98">Recepción</option>
                                 </select>
                             </div>
 

@@ -28,7 +28,7 @@ const ListaUsuarios = () => {
             quitarAcentos(search.toLowerCase())
           ) ||
           quitarAcentos(
-            (item.id_rol == 99 ? "Administrador" : "Recepcion").toLowerCase()
+            (item.id_rol == 99 ? "Administrador" : "Recepción").toLowerCase()
           ).includes(quitarAcentos(search.toLowerCase())) ||
           quitarAcentos(item.email.toLowerCase()).includes(
             quitarAcentos(search.toLowerCase())
@@ -94,7 +94,7 @@ const ListaUsuarios = () => {
           quitarAcentos(search.toLowerCase())
         ) ||
         quitarAcentos(
-          (item.id_rol == 99 ? "Administrador" : "Recepcion").toLowerCase()
+          (item.id_rol == 99 ? "Administrador" : "Recepción").toLowerCase()
         ).includes(quitarAcentos(search.toLowerCase())) ||
         quitarAcentos(item.email.toLowerCase()).includes(
           quitarAcentos(search.toLowerCase())
@@ -225,7 +225,7 @@ const ListaUsuarios = () => {
                           className="text-truncate trucate_text"
                           style={{ textAlign: "center" }}
                         >
-                          {clinica.id_rol == 99 ? "Administrador" : "Recepcion"}
+                          {clinica.id_rol == 99 ? "Administrador" : "Recepción"}
                         </td>
                         <td
                           className="text-truncate trucate_text"

@@ -405,7 +405,7 @@ const ArchivosEstudio = () => {
     const data = new FormData();
     data.append("name", nombres);
     data.append("nameDoctor", odontologo);
-    data.append("user", dni);
+    data.append("user", email);
     data.append("pass", dni);
     data.append("email", email);
 
@@ -451,7 +451,7 @@ const ArchivosEstudio = () => {
   const whatsappPaciente = () => {
     const telefono = celularpaciente;
     if (telefono) {
-      const mensaje = `Estimado Sr(a). ${nombres},\n\nEn Radiología Dental Los Olivos nos complace informarle que sus resultados ya están disponibles. Le invitamos a acceder a nuestro sistema utilizando el siguiente link : https://sistema.afg.com.pe/ \n\nLe recordamos que sus credenciales son:\n\nUsuario: ${dni}\nContraseña: ${dni}\n\n¡Gracias por elegirnos!`;
+      const mensaje = `Estimado Sr(a). ${nombres},\n\nEn RDA - Radiología Dental Avanzada nos complace informarle que sus resultados ya están disponibles. Le invitamos a acceder a nuestro sistema utilizando el siguiente link : https://sistema.afg.com.pe/ \n\nLe recordamos que sus credenciales son:\n\nUsuario: ${email}\nContraseña: ${dni}\n\n¡Gracias por elegirnos!`;
       const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
         mensaje
       )}`;
@@ -463,14 +463,18 @@ const ArchivosEstudio = () => {
 
   const whatsappDoctor = () => {
     const telefono = celularDoctor;
-    if (telefono) {
-      const mensaje = `Estimado Dr(a).${odontologo},\n\nEn Radiología Dental Los Olivos nos complace informarle que los resultados se su paciente ${nombres} ya están disponibles. Le invitamos a acceder a nuestro sistema utilizando el siguiente link:https://sistema.afg.com.pe/ \n\nLe recordamos que sus credenciales son:\nUsuario: ${user_odontologo}\nContraseña: ${passOdontologo}\n\n¡Gracias por elegirnos!`;
-      const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
-        mensaje
-      )}`;
-      window.open(url);
-    } else {
-      Swal.fire("El odontólogo no tiene un celular registrado", "", "warning");
+    if(user_odontologo != null){
+        if (telefono) {
+          const mensaje = `Estimado Dr(a).${odontologo},\n\nEn RDA - Radiología Dental Avanzada nos complace informarle que los resultados se su paciente ${nombres} ya están disponibles. Le invitamos a acceder a nuestro sistema utilizando el siguiente link:https://sistema.afg.com.pe/ \n\nLe recordamos que sus credenciales son:\nUsuario: ${user_odontologo}\nContraseña: ${passOdontologo}\n\n¡Gracias por elegirnos!`;
+          const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
+            mensaje
+          )}`;
+          window.open(url);
+        } else {
+          Swal.fire("El odontólogo no tiene un celular registrado", "", "warning");
+        }
+    }else{
+        Swal.fire("El odontólogo no tiene correo electrónico, y se necesita porque será su usuario para el ingreso en el sistema de resultados en línea, por ende, no se le puede enviar la	 alerta por WhatsApp", "", "warning");
     }
   };
 
