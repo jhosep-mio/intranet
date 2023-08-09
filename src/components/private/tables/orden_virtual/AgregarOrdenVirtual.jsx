@@ -351,6 +351,7 @@ const AgregarOrdenVirtual = () => {
     }, [elementos])
 
     const saveOrdenVirtual = async (e) => {
+        setLoading(true)
         e.preventDefault();
         if(elementos.length == 0 || !elementos.some(elemento => elemento.estado == true)){
             Swal.fire('Seleccionar un tipo de examen', '', 'error');
@@ -371,8 +372,6 @@ const AgregarOrdenVirtual = () => {
                 }
             });
 
-            console.log(idOdontologo)
-            console.log(oneClinica.data.clinica)
 
             data.append('id_clinica', oneClinica.data.clinica);
 
@@ -456,6 +455,7 @@ const AgregarOrdenVirtual = () => {
                 }
             }
         }
+        setLoading(false)
     }
 
     useEffect(() =>{

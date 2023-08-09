@@ -77,10 +77,10 @@ const ListaTipos = () => {
   useEffect ( () =>{
     const filter2 = servicios.filter((item) => {
         return (
-            quitarAcentos(item.nombre.toLowerCase()).includes(
-              quitarAcentos(search.toLowerCase())
-            ) || 
-            item.id.toString().includes(search.toLowerCase())
+          quitarAcentos(item.nombre.toLowerCase()).includes(
+            quitarAcentos(search.toLowerCase())
+          ) || 
+          item.id.toString().includes(search.toLowerCase())
         )
     });
     setCargandoBusqueda(filter2.length);

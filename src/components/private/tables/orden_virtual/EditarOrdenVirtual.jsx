@@ -374,9 +374,6 @@ const EditarOrdenVirtual = () => {
                 }
             });
 
-            console.log(idOdontologo)
-            console.log(oneClinica.data.clinica)
-
             data.append('id_clinica', oneClinica.data.clinica);
 
             data.append('consulta', consulta);

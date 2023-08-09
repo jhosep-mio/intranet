@@ -182,14 +182,14 @@ export const Navbar = () => {
                     <li className="">
                         <Link onClick={cerrarSession}>
                             <FontAwesomeIcon icon={faArrowRightFromBracket} className="icon"/>
-                            <span className="text nav-text">Cerrar sesion</span>
+                            <span className="text nav-text">Cerrar sesión</span>
                         </Link>
                     </li>
                     : 
                     <li className="">
                         <Link onClick={cerrarSessionUsers}>
                             <FontAwesomeIcon icon={faArrowRightFromBracket} className="icon"/>
-                            <span className="text nav-text">Cerrar sesion</span>
+                            <span className="text nav-text">Cerrar sesión</span>
                         </Link>
                     </li>}
                     

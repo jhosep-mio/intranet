@@ -67,7 +67,7 @@ const AgregarClinica = () => {
             {!loading ?
             <div className="card">
                 <div className="card-header fw-bold">
-                    Agregar Clinica:
+                    Agregar Clínica:
                 </div>
                 <form className="p-4 needs-validation" onSubmit={saveClinica}>
                     <div className="d-flex justify-content-between">

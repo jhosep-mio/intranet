@@ -74,7 +74,7 @@ const ListaOdontologos = () => {
 
   const preguntar2 = (id) => {
     Swal.fire({
-      title: `¿Estás seguro de eliminar al odontologo N° ${id}?`,
+      title: `¿Estás seguro de eliminar al odontólogo N° ${id}?`,
       showDenyButton: true,
       confirmButtonText: "Eliminar",
       denyButtonText: `Cancelar`,

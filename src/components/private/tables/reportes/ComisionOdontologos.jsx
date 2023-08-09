@@ -168,7 +168,7 @@ export const ComisionOdontologos = () => {
                     id="table-xls-button"
                     className="download"
                     table="productos2"
-                    filename="Reporte de comision por odontologo"
+                    filename="Reporte de comisión por odontólogo"
                     sheet="sheet1"
                     buttonText="Excel"
                   />
@@ -208,7 +208,7 @@ export const ComisionOdontologos = () => {
                   <tr>
                     {/* <!-- 1 --> */}
                     <th scope="col" className="text-center">
-                      Odontologo
+                      Odontólogo
                     </th>
                     {/* <!-- 2 --> */}
                     <th scope="col" className="text-center">
@@ -224,7 +224,7 @@ export const ComisionOdontologos = () => {
                     </th>
 
                     <th scope="col" className="text-center">
-                      Comision a pagar
+                    comisión a pagar
                     </th>
 
                     <th scope="col" className="text-center">
@@ -459,7 +459,7 @@ export const ComisionOdontologos = () => {
                   <tr>
                     {/* <!-- 1 --> */}
                     <th scope="col" className="text-center">
-                      Odontologo
+                      Odontólogo
                     </th>
                     {/* <!-- 2 --> */}
                     <th scope="col" className="text-center">
@@ -475,7 +475,7 @@ export const ComisionOdontologos = () => {
                     </th>
 
                     <th scope="col" className="text-center">
-                      Comision a pagar
+                    comisión a pagar
                     </th>
 
                     <th scope="col" className="text-center">

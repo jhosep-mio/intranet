@@ -403,7 +403,7 @@ const EditarOdontologo = () => {
                       <input
                         type="button"
                         className="btn btn-primary btnRegistrar"
-                        value="Agregar Clinica"
+                        value="Agregar Clínica"
                         onClick={handleShow}
                       />
                     </div>
@@ -411,7 +411,7 @@ const EditarOdontologo = () => {
 
                   <div className="content_general mb-3 col-md-12">
                     <div className="mb-3 col-md-6 div_conten2 ">
-                      <label className="label_title col-md-5">Clinica: </label>
+                      <label className="label_title col-md-5">Clínica: </label>
                       {clinicas.map(
                         (cli) =>
                           cli.id == clinica && (

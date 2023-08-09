@@ -77,7 +77,7 @@ const AgregarClinica = ({cerrar, setClinica, setNombreClinica}) => {
     <div className="container col-md-12 mt-6 relative">
       {!loading ? (
         <div className="card">
-          <div className="card-header fw-bold">Agregar Clinica:</div>
+          <div className="card-header fw-bold">Agregar Clínica:</div>
           <form className="p-4 needs-validation" onSubmit={saveClinica}>
             <div className="d-flex justify-content-between">
               <div className="mb-3 col-md-12 content_img">

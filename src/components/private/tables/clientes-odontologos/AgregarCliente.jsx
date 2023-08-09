@@ -159,7 +159,7 @@ const AgregarCliente = () => {
         } else if (
           error.request.response.includes("The celular must be 9 digits")
         ) {
-          Swal.fire("El celular debe tener 9 digito", "", "error");
+          Swal.fire("El celular debe tener 9 dígitos", "", "error");
         } else {
           Swal.fire("Error no encontrado", "", "error");
         }
@@ -399,7 +399,7 @@ const AgregarCliente = () => {
                           onChange={identificarCliente}
                         >
                           <option value="0">Paciente</option>
-                          <option value="1">Odontologo</option>
+                          <option value="1">Odontólogo</option>
                         </select>
                       </div>
                       <div className="mb-3 col-md-6 div_conten">
@@ -738,7 +738,7 @@ const AgregarCliente = () => {
                           onChange={identificarCliente}
                         >
                           <option value="0">Paciente</option>
-                          <option value="1">Odontologo</option>
+                          <option value="1">Odontólogo</option>
                         </select>
                       </div>
                       <div className="mb-3 col-md-6 div_conten">
@@ -805,7 +805,7 @@ const AgregarCliente = () => {
                         <input
                           type="button"
                           className="btn btn-primary btnRegistrar"
-                          value="Agregar Clinica"
+                          value="Agregar Clínica"
                           onClick={handleShow}
                         />
                       </div>

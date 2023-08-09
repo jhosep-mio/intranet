@@ -385,11 +385,11 @@ export const IngresosMensuales = () => {
                     </th>
 
                     <th scope="col" className="text-center">
-                      Comision Digital
+                      Comisión Digital
                     </th>
 
                     <th scope="col" className="text-center">
-                      Comision Impreso
+                      Comisión Impreso
                     </th>
 
                     <th scope="col" className="text-center">
@@ -1632,11 +1632,11 @@ export const IngresosMensuales = () => {
                     </th>
 
                     <th scope="col" className="text-center">
-                      Comision Digital
+                      Comisión Digital
                     </th>
 
                     <th scope="col" className="text-center">
-                      Comision Impreso
+                      Comisión Impreso
                     </th>
 
                     <th scope="col" className="text-center">

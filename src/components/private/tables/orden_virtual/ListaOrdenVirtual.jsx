@@ -296,6 +296,7 @@ const ListaOrdenVirtual = () => {
   };
 
   const handleSubmit = async (e) => {
+    setSelected(0)
     setLoading(true);
     if (fechaInicio && fechaFin) {
       e.preventDefault();

@@ -75,7 +75,7 @@ const AgregarServicio = () => {
                             </div>
                             <div className='content_general mb-3 col-md-12'>
                                 <div className="mb-3 col-md-12 div_conten">
-                                    <label className="label_title col-md-5">¿Desea que aparezca la opcion de impresión?: </label>
+                                    <label className="label_title col-md-5">¿Desea que aparezca la opción de impresión?: </label>
                                     <select value={impresion} type="text" className=" form-select2" autoFocus required onChange={(e)=>{setImpresion(e.target.value)}}>
                                         <option value="0" >No</option>
                                         <option value="1" >Si</option>

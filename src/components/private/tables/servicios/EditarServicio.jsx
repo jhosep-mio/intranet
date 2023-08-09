@@ -121,7 +121,7 @@ const EditarServicio = () => {
                 <div className="content_general mb-3 col-md-12">
                   <div className="mb-3 col-md-12 div_conten">
                     <label className="label_title col-md-5">
-                      ¿Desea que aparezca la opcion de impresión?:{" "}
+                      ¿Desea que aparezca la opción de impresión?:{" "}
                     </label>
                     <select
                       value={impresion}

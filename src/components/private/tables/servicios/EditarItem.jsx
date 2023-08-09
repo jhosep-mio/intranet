@@ -213,7 +213,7 @@ const EditarItem = () => {
                             </div>
                             <div className='content_general mb-3 col-md-12'>
                                 <div className="mb-3 col-md-6 div_conten2">
-                                    <label className="label_title col-md-5">Comision de impresión: </label>
+                                    <label className="label_title col-md-5">Comisión de impresión: </label>
                                     <input className="form-control form-control3" autoFocus 
                                         value={comision_impreso}
                                         type="number"
@@ -223,7 +223,7 @@ const EditarItem = () => {
                                 </div>
 
                                 <div className="mb-3 col-md-6 div_conten">
-                                    <label className="label_title col-md-5">Comision Digital: </label>
+                                    <label className="label_title col-md-5">Comisión Digital: </label>
                                     <input className="form-control form-control3" autoFocus 
                                         value={comision_digital}
                                         type="number"

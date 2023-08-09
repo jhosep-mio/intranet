@@ -166,7 +166,7 @@ const AgregarCliente = (props) => {
         } else if (
           error.request.response.includes("The celular must be 9 digits")
         ) {
-          Swal.fire("El celular debe tener 9 digito", "", "error");
+          Swal.fire("El celular debe tener 9 dígitos", "", "error");
         } else {
           Swal.fire("Error no encontrado", "", "error");
         }

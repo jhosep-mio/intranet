@@ -63,7 +63,7 @@ const EditarClinica = () => {
         Swal.fire("Editado correctamente", "", "success");
         navigate("/admin/clinicas");
       } else {
-        Swal.fire("Error al editar la clinica", "", "error");
+        Swal.fire("Error al editar la clínica", "", "error");
       }
     } catch (error) {
       if (
@@ -121,7 +121,7 @@ const EditarClinica = () => {
     <div className="container col-md-10 mt-6">
       {!loading ? (
         <div className="card">
-          <div className="card-header fw-bold">Editar Clinica:</div>
+          <div className="card-header fw-bold">Editar Clínica:</div>
           <div className="d-flex justify-content-between">
             <div className="mb-3 col-md-12 content_img">
               <img src={logo} alt="" />

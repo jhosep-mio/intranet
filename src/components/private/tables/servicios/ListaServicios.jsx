@@ -124,7 +124,11 @@ const ListaServicios = () => {
       return (
         quitarAcentos(item.nombre.toLowerCase()).includes(
           quitarAcentos(search.toLowerCase())
+        ) || quitarAcentos(item.servicio.toLowerCase()).includes(
+          quitarAcentos(search.toLowerCase())
         ) || item.id.toString().includes(search.toLowerCase())
+        || item.precio_impresion.toString().includes(search.toLowerCase())
+        || item.precio_digital.toString().includes(search.toLowerCase())
       );
     });
 

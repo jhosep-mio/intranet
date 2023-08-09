@@ -198,7 +198,7 @@ export const PacientesClinicas = () => {
                   <tr>
                     {/* <!-- 1 --> */}
                     <th scope="col" className="text-center">
-                      Clinica
+                      Clínica
                     </th>
                     {/* <!-- 2 --> */}
                     <th scope="col" className="text-center">
@@ -271,7 +271,7 @@ export const PacientesClinicas = () => {
                   <tr>
                     {/* <!-- 1 --> */}
                     <th scope="col" className="text-center">
-                      Clinica
+                      Clínica
                     </th>
                     {/* <!-- 2 --> */}
                     <th scope="col" className="text-center">
