@@ -182,7 +182,7 @@ const EditarItem = () => {
                             </div>
                             <div className='content_general mb-3 col-md-12'>
                                 <div className="mb-3 col-md-8 div_conten2">
-                                    <label className="label_title col-md-5">Servicio: </label>
+                                    <label className="label_title col-md-5">Tipo de Exámen: </label>
                                     <select value={id_servicio} type="text" className="form-select2"  autoFocus required onChange={(e)=>{setId_servicio(e.target.value)}}>
                                         {servicios.map((clini) => (
                                         <option key={clini.id} value={clini.id}>{clini.nombre}</option>
