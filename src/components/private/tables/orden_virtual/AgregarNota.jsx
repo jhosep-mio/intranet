@@ -1,16 +1,35 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Global } from "../../../../helper/Global";
 import Swal from "sweetalert2";
 import logo from "./../../../../assets/logos/logo.png";
 import { LoadingSmall } from "../../shared/LoadingSmall";
+import useAuth from "../../../../hooks/useAuth";
 
 const AgregarNota = (props) => {
   const { id_orden, cerrar, setEstadoG } = props;
   const [tipo_documento, setTipoDocumento] = useState(0);
   const [id_documento, setId_documento] = useState("");
   const [loading, setLoading] = useState(false);
+  const { auth } = useAuth();
+  let token = localStorage.getItem("token");
+
+  const upadteModificador = async () => {
+    const data = new FormData();
+    data.append("id_modificacion", auth.id);
+    data.append("_method", "PUT");
+
+    const resultado = await axios.post(
+      `${Global.url}/updateNewToModifcate/${id_orden}`,
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log(resultado);
+  };
 
   const saveClinica = async (e) => {
     setLoading(true);
@@ -47,6 +66,7 @@ const AgregarNota = (props) => {
           if (respuesta2.data.status == "success") {
             setTipoDocumento("");
             setId_documento("");
+            upadteModificador();
             setEstadoG(3);
             cerrar();
             Swal.fire("Agregado Correctamente", "", "success");

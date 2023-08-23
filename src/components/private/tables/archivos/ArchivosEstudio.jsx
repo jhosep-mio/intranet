@@ -157,9 +157,9 @@ const ArchivosEstudio = () => {
     );
 
     const fechaObjeto = new Date(fecha_at);
-    const year = fechaObjeto.getFullYear().toString().padStart(4, '0');
-    const month = (fechaObjeto.getMonth() + 1).toString().padStart(2, '0');
-    const day = fechaObjeto.getDate().toString().padStart(2, '0');
+    const year = fechaObjeto.getFullYear().toString().padStart(4, "0");
+    const month = (fechaObjeto.getMonth() + 1).toString().padStart(2, "0");
+    const day = fechaObjeto.getDate().toString().padStart(2, "0");
     const fechaFormateada = `${year}-${month}-${day}`;
     setFechaAt(fechaFormateada);
 
@@ -425,56 +425,99 @@ const ArchivosEstudio = () => {
       }
     } catch (error) {
       console.log(error);
-    //   Swal.fire("Error al enviar el correo", "", "error");
+      //   Swal.fire("Error al enviar el correo", "", "error");
     }
+
     setLoadingCorreo(false);
   };
 
   const enviocorreoquestion = () => {
-    Swal.fire({
-      title: `Este correo será enviado al paciente y odontólogo`,
-      showDenyButton: true,
-      confirmButtonText: "Continuar",
-      denyButtonText: `Cancelar`,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        enviarCorreo();
-        Swal.fire(
-          "El correo será enviado a",
-          `Paciente -${email != null ? email : 'No tiene correo'} \n\n y Doctor: ${email_odontologo != null ? email_odontologo : 'No tiene correo'}`,
-          "success"
-        );
-      }
-    });
+    const existeImagen = images.some((image) => image.id_orden == id);
+    const existeinforme = informes.some((image) => image.id_orden == id);
+    if (existeImagen || existeinforme) {
+      Swal.fire({
+        title: `Este correo será enviado al paciente y odontólogo`,
+        showDenyButton: true,
+        confirmButtonText: "Continuar",
+        denyButtonText: `Cancelar`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          enviarCorreo();
+          Swal.fire(
+            "El correo será enviado a",
+            `Paciente -${
+              email != null ? email : "No tiene correo"
+            } \n\n y Doctor: ${
+              email_odontologo != null ? email_odontologo : "No tiene correo"
+            }`,
+            "success"
+          );
+        }
+      });
+    } else {
+      Swal.fire(
+        "Se deben subir los resultados para enviar la notificación",
+        "",
+        "error"
+      );
+    }
   };
 
   const whatsappPaciente = () => {
-    const telefono = celularpaciente;
-    if (telefono) {
-      const mensaje = `Estimado(a) Sr(a). ${nombres},\n\nEn RDA - Radiología Dental Avanzada nos complace informarle que sus resultados ya están disponibles. Le invitamos a acceder a nuestro sistema utilizando el siguiente link: https://sistema.afg.com.pe/ \n\nLe recordamos que sus credenciales son:\n\nUsuario: ${email}\nContraseña: ${dni}\n\n¡Gracias por elegirnos!`;
-      const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
-        mensaje
-      )}`;
-      window.open(url);
+    const existeImagen = images.some((image) => image.id_orden == id);
+    const existeinforme = informes.some((image) => image.id_orden == id);
+    if (existeImagen || existeinforme) {
+      const telefono = celularpaciente;
+      if (telefono) {
+        const mensaje = `Estimado(a) Sr(a). ${nombres},\n\nEn Radiología Dental Avanzada nos complace informarle que sus resultados ya están disponibles. Le invitamos a acceder a nuestro sistema utilizando el siguiente link: https://sistema.afg.com.pe/ \n\nLe recordamos que sus credenciales son:\n\nUsuario: ${email}\nContraseña: ${dni}\n\n¡Gracias por elegirnos!`;
+        const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
+          mensaje
+        )}`;
+        window.open(url);
+      } else {
+        Swal.fire("El Paciente no tiene un celular registrado", "", "warning");
+      }
     } else {
-      Swal.fire("El Paciente no tiene un celular registrado", "", "warning");
+      Swal.fire(
+        "Se deben subir los resultados para enviar la notificación",
+        "",
+        "error"
+      );
     }
   };
 
   const whatsappDoctor = () => {
-    const telefono = celularDoctor;
-    if(user_odontologo != null){
+    const existeImagen = images.some((image) => image.id_orden == id);
+    const existeinforme = informes.some((image) => image.id_orden == id);
+    if (existeImagen || existeinforme) {
+      const telefono = celularDoctor;
+      if (user_odontologo != null) {
         if (telefono) {
-          const mensaje = `Estimado(a) Dr(a). ${odontologo},\n\nEn RDA - Radiología Dental Avanzada nos complace informarle que los resultados se su paciente ${nombres} ya están disponibles. Le invitamos a acceder a nuestro sistema utilizando el siguiente link: https://sistema.afg.com.pe/ \n\nLe recordamos que sus credenciales son:\n\nUsuario: ${user_odontologo}\nContraseña: ${passOdontologo}\n\n¡Gracias por elegirnos!`;
+          const mensaje = `Estimado(a) Dr(a). ${odontologo},\n\nEn Radiología Dental Avanzada nos complace informarle que los resultados de su paciente ${nombres} ya están disponibles. Le invitamos a acceder a nuestro sistema utilizando el siguiente link: https://sistema.afg.com.pe/ \n\nLe recordamos que sus credenciales son:\n\nUsuario: ${user_odontologo}\nContraseña: ${passOdontologo}\n\n¡Gracias por elegirnos!`;
           const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(
             mensaje
           )}`;
           window.open(url);
         } else {
-          Swal.fire("El odontólogo no tiene un celular registrado", "", "warning");
+          Swal.fire(
+            "El odontólogo no tiene un celular registrado",
+            "",
+            "warning"
+          );
         }
-    }else{
-        Swal.fire("El odontólogo no tiene correo electrónico, y se necesita porque será su usuario para el ingreso en el sistema de resultados en línea, por ende, no se le puede enviar la	 alerta por WhatsApp", "", "warning");
+      } else {
+        Swal.fire(
+          "El odontólogo no tiene correo electrónico, y se necesita porque será su usuario para el ingreso en el sistema de resultados en línea, por ende, no se le puede enviar la	 alerta por WhatsApp",
+          "",
+          "warning"
+        );
+      }
+    } else {
+      Swal.fire(
+        "Se deben subir los resultados para enviar la notificación",
+        "",
+        "error"
+      );
     }
   };
 
@@ -712,16 +755,17 @@ const ArchivosEstudio = () => {
                 />
               </div>
             </div>
-            <Accordion
-              activeKey={activeKeys}
-              className="kkk_sss"
-            >
+            <Accordion activeKey={activeKeys} className="kkk_sss">
               {
                 <>
-                  <Accordion.Item key={"1"} eventKey={"1"} className="quitarcursor">
+                  <Accordion.Item
+                    key={"1"}
+                    eventKey={"1"}
+                    className="quitarcursor"
+                  >
                     <Accordion.Header
                       className="card-header fw-bold"
-                      style={{ marginTop: "20px", cursor: 'default' }}
+                      style={{ marginTop: "20px", cursor: "default" }}
                     >
                       Subir Imágenes
                       <ModalSeperado
@@ -861,7 +905,11 @@ const ArchivosEstudio = () => {
                       </div>
                     </Accordion.Body>
                   </Accordion.Item>
-                  <Accordion.Item key={"1"} eventKey={"1"} className="quitarcursor">
+                  <Accordion.Item
+                    key={"1"}
+                    eventKey={"1"}
+                    className="quitarcursor"
+                  >
                     <Accordion.Header
                       className="card-header fw-bold"
                       style={{ marginTop: "20px" }}

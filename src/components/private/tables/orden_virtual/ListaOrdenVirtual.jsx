@@ -31,13 +31,12 @@ const ListaOrdenVirtual = () => {
 
   const getAllOrdenes = async () => {
     const data = new FormData();
-    data.append("buscar", search);
+    data.append("buscar", ' ');
     const request = await axios.post(`${Global.url}/buscarOrdenes`, data, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-
     setpaginaActual(1);
     setOrdenes(request.data);
     setCargandoBusqueda(request.data.length);
@@ -182,7 +181,7 @@ const ListaOrdenVirtual = () => {
         item.id.toString().includes(searchLowerCase)
       );
     });
-
+    totalPosts= filter.length
     return filter.slice(indexOfFirstPost, indexOfLastPost);
   };
 
@@ -267,8 +266,6 @@ const ListaOrdenVirtual = () => {
         });
         setCargandoBusqueda(filter.length);
 
-
-
       } else {
         Swal.fire("Error al eliminar el registro", "", "error");
       }
@@ -311,7 +308,51 @@ const ListaOrdenVirtual = () => {
         });
         setpaginaActual(1);
         setOrdenes(request.data);
-        setCargandoBusqueda(request.data.length);
+        if (search.length == 0) {
+          setCargandoBusqueda(request.data.length);
+        }else {
+          const filter = request.data.filter((item) => {
+            const fullNamePaciente =
+              item.paciente +
+              " " +
+              item.paciente_apellido_p +
+              " " +
+              item.paciente_apellido_m;
+            const fullNameLowerCasePaciente = quitarAcentos(
+              fullNamePaciente.toLowerCase()
+            );
+      
+            const fullNameOdontologo =
+              item.odontologo +
+              " " +
+              item.odontologo_apellido_p +
+              " " +
+              item.odontologo_apellido_m;
+            const fullNameLowerCaseOdontologo = quitarAcentos(
+              fullNameOdontologo.toLowerCase()
+            );
+      
+            const searchLowerCase = quitarAcentos(search.toLowerCase());
+            const searchWords = searchLowerCase.split(" ");
+      
+            // Verificar si todas las palabras de búsqueda coinciden con alguna parte del nombre completo del paciente
+            const isMatchedPaciente = searchWords.every((word) => {
+              return fullNameLowerCasePaciente.includes(word);
+            });
+      
+            // Verificar si todas las palabras de búsqueda coinciden con alguna parte del nombre completo del odontólogo
+            const isMatchedOdontologo = searchWords.every((word) => {
+              return fullNameLowerCaseOdontologo.includes(word);
+            });
+      
+            return (
+              isMatchedPaciente ||
+              isMatchedOdontologo ||
+              item.id.toString().includes(searchLowerCase)
+            );
+          });
+          setCargandoBusqueda(filter.length);
+        }
         getAllservicios();
         getAllUsuarios();
         setLoading(false);
@@ -321,7 +362,7 @@ const ListaOrdenVirtual = () => {
       setLoading(false);
     } else {
       setSearch("");
-      getAllOrdenes();
+        getAllOrdenes();
     }
   };
 

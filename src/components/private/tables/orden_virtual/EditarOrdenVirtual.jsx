@@ -616,6 +616,7 @@ const EditarOrdenVirtual = () => {
                 } });
 
             if(respuesta.data.status == "success"){   
+                upadteModificador()
                 setEstadoG(2);
                 Swal.fire('Editado correctamente', '', 'success');
             }  else{
@@ -627,7 +628,21 @@ const EditarOrdenVirtual = () => {
         }
     }
 
+    const upadteModificador = async () => {
+        console.log('entre')
+        const data = new FormData();
+        data.append('id_modificacion', auth.id);
+        data.append('_method', 'PUT');
+
+        const resultado = await axios.post(`${Global.url}/updateNewToModifcate/${id}`, data,{
+            headers:{
+                'Authorization': `Bearer ${token}`
+        } });
+        console.log(resultado)
+    }
+
     const agregarStado1 = async () => {
+        console.log('entre')
         const data2 = new FormData();
         data2.append('estado', 1);
         data2.append('_method', 'PUT');
@@ -638,6 +653,7 @@ const EditarOrdenVirtual = () => {
                 } });
 
             if(respuesta2.data.status == "success"){   
+                upadteModificador()
                 setEstadoG(1);
                 Swal.fire('Editado correctamente', '', 'success');
             }  else{
@@ -671,7 +687,6 @@ const EditarOrdenVirtual = () => {
         }
     };
       
-
     return (
         <div className="container col-md-9 mt-6">
             {loading == false ?

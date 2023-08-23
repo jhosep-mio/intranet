@@ -160,7 +160,16 @@ const AgregarCliente = () => {
           error.request.response.includes("The celular must be 9 digits")
         ) {
           Swal.fire("El celular debe tener 9 dígitos", "", "error");
+        } else if (
+          error.request.response.includes("The celular must be at least 100000000")
+        ) {
+          Swal.fire("El celular debe tener 9 dígitos", "", "error");
+        } else if (
+          error.request.response.includes("The celular must not be greater than 999999999")
+        ) {
+          Swal.fire("El celular debe tener 9 dígitos", "", "error");
         } else {
+          console.log(error)
           Swal.fire("Error no encontrado", "", "error");
         }
       }

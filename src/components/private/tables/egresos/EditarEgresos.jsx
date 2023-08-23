@@ -56,7 +56,7 @@ const EditarEgresos = () => {
         Swal.fire("Editado correctamente", "", "success");
         navigate("/admin/egresos");
       } else {
-        Swal.fire("Error al editar la clínica", "", "error");
+        Swal.fire("Error al editar el registro", "", "error");
       }
     } catch (error) {
       console.log(error.request.response);
